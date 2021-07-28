@@ -2,6 +2,7 @@
     "name": "jdubon/lumen",
     "description": "Utilities package for lumen",
     "keywords": ["lumen","utilities"],
+    "license": "MIT",
     "autoload": {
         "psr-4": {
             "Jdubon\\Lumen\\": "src/"
