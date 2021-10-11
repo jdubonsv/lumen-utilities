@@ -8,13 +8,6 @@ use Illuminate\Validation\ValidationException;
 class RequestValidator implements RequestValidatorInterface
 {
     /**
-     * ID to update
-     *
-     * @var mixed
-     */
-    protected $id;
-
-    /**
      * Creating the instance and validating the request
      */
     public function __construct()
@@ -54,8 +47,6 @@ class RequestValidator implements RequestValidatorInterface
         if(count($rules) == 0)
             return; // nothing to validate
 
-        $this->findIdParam(); // This is useful in updates to validates unique values
-
         $params   = request()->all();
         $messages = $this->messages();
 
@@ -73,16 +64,5 @@ class RequestValidator implements RequestValidatorInterface
     public function getParams()
     {
         return request()->all();
-    }
-
-    /**
-     * Looking if there is an ID value in the route
-     * Usefull to validate unique colums when update records
-     *
-     * @return void
-     */
-    private function findIdParam()
-    {
-        $this->id = request()->route('id', null);
     }
 }
